@@ -1,0 +1,38 @@
+'"#Language ""WWB-COM""
+Option Explicit
+Sub Main
+Dim diag As Diagram
+Dim mdl As Model
+Dim ddlgen As DDLGeneration
+Debug.Clear
+Set diag = DiagramManager.ActiveDiagram
+Set mdl = diag.ActiveModel
+Set ddlgen = mdl.DDLGenerationObject
+If True Then
+ddlgen.ConnectionName(Use any SQL Server Instance)
+ddlgen.CreateNewDatabase = False
+ddlgen.DataSourceName("MS SQL Server")
+ddlgen.DatabaseName("sample_example_123")
+ddlgen.GenerateDatabaseMethod(3)
+ddlgen.GenerateAllEntities
+ddlgen.GenerateViews = True
+ddlgen.GenerateSynonyms = True
+ddlgen.GenerateSequences = True
+ddlgen.GenFunctionCreateStatement = True
+ddlgen.GenerateAllStoredProcedures
+ddlgen.GenerateAllTriggers
+ddlgen.Username("adminuser")
+ddlgen.UserPassword("control*88")
+Else
+ddlgen.CreationScriptFilePath("C:\ProgramData\Idera\ERStudioDA_20.0\SQL Code\SQLServer1.sql")
+ddlgen.GenerateTableCreateStatement = True
+ddlgen.GenerateAllEntities
+ddlgen.GenerateColumnComment = True
+ddlgen.GenerateTableComment = True
+ddlgen.GeneratePKByAlterStatement = True
+End If
+Dim bSuccess As Boolean
+bSuccess = ddlgen.GenerateDDL
+Debug.Print("Generating Database ... " + DiagramManager.GetLastErrorString)
+Debug.Print("Done")
+End Sub
