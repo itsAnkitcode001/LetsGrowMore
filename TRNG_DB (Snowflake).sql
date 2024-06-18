@@ -1,0 +1,202 @@
+--
+-- ER/Studio Data Architect SQL Code Generation
+-- Project :      HRMODEL_1.dm1
+--
+-- Date Created : Tuesday, June 18, 2024 15:12:53
+-- Target DBMS : Snowflake
+--
+
+-- 
+-- TABLE: ADR 
+--
+
+CREATE TABLE ADR(
+    ADRID       NUMBER(10, 0)    NOT NULL,
+    ADRLINE1    TEXT(18),
+    ADRLINE2    TEXT(18),
+    CITY        TIME,
+    POSTCDE     TEXT(18),
+    CTY         TEXT(18),
+    PRIMARY KEY (ADRID)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: AGY 
+--
+
+CREATE TABLE AGY(
+    ID          NUMBER(10, 0)    NOT NULL,
+    AGYNME      TEXT(18),
+    MAINCCT     TEXT(18),
+    CONTRACT    TEXT(18),
+    PRIMARY KEY (ID)
+)
+CLUSTER BY(AGYNME) 
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: CNR 
+--
+
+CREATE TABLE CNR(
+    EMPNMB      NUMBER(10, 0)    NOT NULL,
+    DAYRAT      TEXT(18),
+    AGENCYID    NUMBER(10, 0),
+    PRIMARY KEY (EMPNMB)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: DEP 
+--
+
+CREATE TABLE DEP(
+    ID     NUMBER(38, 0)    NOT NULL,
+    NME    TEXT(18),
+    PRIMARY KEY (ID)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: EMP 
+--
+
+CREATE TABLE EMP(
+    EMPNMB      NUMBER(10, 0)    NOT NULL,
+    EMPTYP      VARCHAR(18),
+    STTDTE      DATE,
+    PHONENMB    NUMBER(15, 0),
+    FRSNME      VARCHAR(25),
+    SURNAME     VARCHAR(100),
+    CVTEXT      TEXT(18),
+    MEMBER      NUMBER(38, 0),
+    MANAGER     NUMBER(38, 0),
+    ADRID       NUMBER(10, 0),
+    PRIMARY KEY (EMPNMB)
+)
+CLUSTER BY(MANAGER) 
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: EMP_LOAD 
+--
+
+CREATE TEMPORARY TABLE EMP_LOAD(
+    EMPTYP      TEXT(18),
+    EMPNMB      NUMBER(10, 0)    NOT NULL,
+    STTDTE      DATE,
+    PHONENMB    NUMBER(15, 0),
+    FRSNME      TEXT(18),
+    SURNAME     TEXT(18)
+)
+;
+
+
+
+-- 
+-- TABLE: EMPSKLMTX 
+--
+
+CREATE TABLE EMPSKLMTX(
+    ID        NUMBER(6, 0)     NOT NULL,
+    EMPNMB    NUMBER(10, 0)    NOT NULL,
+    LVL       TEXT(18),
+    PRIMARY KEY (EMPNMB, ID)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: FULL_TIMEEMP 
+--
+
+CREATE TABLE FULL_TIMEEMP(
+    EMPNMB     NUMBER(10, 0)    NOT NULL,
+    SALARY     TEXT(18),
+    VCTDAYS    TEXT(18),
+    PRIMARY KEY (EMPNMB)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: SKL 
+--
+
+CREATE TABLE SKL(
+    ID     NUMBER(6, 0)    NOT NULL,
+    NME    TEXT(18),
+    DSP    TEXT(18),
+    CTY    TEXT(18),
+    PRIMARY KEY (ID)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: "SKL TRGCRS" 
+--
+
+CREATE TABLE "SKL TRGCRS"(
+    ID       NUMBER(6, 0)    NOT NULL,
+    CRSID    TEXT(18)        NOT NULL,
+    PRIMARY KEY (CRSID, ID)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: TRGCRS 
+--
+
+CREATE TABLE TRGCRS(
+    CRSID       TEXT(18)    NOT NULL,
+    TITLE       TEXT(18),
+    SYNOPSIS    TEXT(18),
+    PRIMARY KEY (CRSID)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
+-- 
+-- TABLE: TRGHST 
+--
+
+CREATE TABLE TRGHST(
+    EMPNMB           NUMBER(10, 0)    NOT NULL,
+    CRSID            TEXT(18)         NOT NULL,
+    COMPLETIONDTE    TIMESTAMP_NTZ,
+    RESULT           NUMBER(3, 0),
+    PRIMARY KEY (CRSID, EMPNMB)
+)
+DATA_RETENTION_TIME_IN_DAYS = 1 
+;
+
+
+
