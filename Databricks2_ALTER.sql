@@ -2,7 +2,7 @@
 -- Drop Constraint, Rename and Create Table SQL
 
 ALTER TABLE Test
-    RENAME TO Test_d62ba558
+    RENAME TO Test_79581aa9
 
 ;
 
@@ -23,10 +23,10 @@ SELECT
 col1,
 col2,
 col3
-FROM Test_d62ba558
+FROM Test_79581aa9
 
 ;
 
-DROP TABLE IF EXISTS Test_d62ba558
+DROP TABLE IF EXISTS Test_79581aa9
 
 ;
