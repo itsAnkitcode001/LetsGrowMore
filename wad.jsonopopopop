@@ -1,0 +1,30 @@
+//
+// ER/Studio Data Architect 
+// Project :      Students_Copy.DM1
+//
+// Date Created : Thursday, June 20, 2024 18:11:12
+// Target DBMS : MongoDB 4.x
+//
+
+// 
+// COLLECTION: "tbl_Students" 
+//
+
+{
+    _id : new ObjectId(),
+    StudentId : NumberInt(0),
+    Firstname : "",
+    Lastname : "",
+    Email : "",
+    DOB : new Date(),
+    AverageScore : NumberInt(0),
+    Address : [ 
+    {
+        StudentId : NumberInt(0),
+        Country : "",
+        City : "",
+        CAP : NumberInt(0),
+        test : { }
+    } ]
+}
+
