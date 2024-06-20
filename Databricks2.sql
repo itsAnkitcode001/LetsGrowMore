@@ -1,14 +1,20 @@
 /*
  * ER/Studio Data Architect SQL Code Generation
+ * Project :      Students_Copy.DM1
  *
- * Date Created : Friday, June 07, 2024 12:12:59
- * Target DBMS : Google BigQuery
+ * Date Created : Thursday, June 20, 2024 11:30:46
+ * Target DBMS : Databricks
  */
 
-/*
- * ER/Studio Data Architect SQL Code Generation
- *
- * Date Created : Friday, June 07, 2024 12:13:00
- * Target DBMS : Google BigQuery
+/* 
+ * TABLE: Test 
  */
+
+CREATE TABLE Test
+(
+    col1    string,
+    col2    string,
+    col3    string
+)
+;
 
