@@ -2,10 +2,14 @@
  * ER/Studio Data Architect SQL Code Generation
  * Project :      Students_Copy.DM1
  *
- * Date Created : Friday, June 21, 2024 11:29:32
+ * Date Created : Friday, June 21, 2024 11:32:17
  * Target DBMS : Databricks
  */
 
+CREATE CATALOG aws MANAGED LOCATION 'uhj' COMMENT 'ghjk'
+;
+USE CATALOG aws
+;
 /* 
  * TABLE: tbl_Students 
  */
